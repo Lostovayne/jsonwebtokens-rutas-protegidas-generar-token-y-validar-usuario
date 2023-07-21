@@ -8,7 +8,9 @@ import {
 const router = Router();
 
 router.get("/", (req, res) => {
-    res.send("Ruta base ");
+    res.send(
+        "Ruta base favor dirigirse a /sign para crear su usuario o /login  si ya está registrado"
+    );
 });
 
 router.post("/sign", GenerarToken);

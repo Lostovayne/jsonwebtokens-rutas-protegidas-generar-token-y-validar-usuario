@@ -19,7 +19,7 @@ const ValidarUsers = (req, res, next) => {
         const payload = jwt.verify(token, secretKey);
         res.redirect("/profile/" + payload.user);
     } catch (error) {
-        res.status(400).json({ msg: "Token no valido" });
+        res.status(400).json({ msg: "Token no valido o expirado" });
     }
 };
 
@@ -40,8 +40,10 @@ const GenerarToken = (req, res) => {
             .status(400)
             .json({ msg: "El usuario o la contraseña son inválidos🧑‍🦼" });
     }
-
-    const token = jwt.sign(payload, secretKey);
+    //generar Token
+    const token = jwt.sign(payload, secretKey, {
+        expiresIn: "2m",
+    });
     res.json({ token });
 };
 
