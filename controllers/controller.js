@@ -60,8 +60,8 @@ const RutaProtegida = (req, res) => {
     try {
         const payload = jwt.verify(token, secretKey);
 
-        console.log(payload.user);
-        console.log(correoUser);
+        // console.log(payload.user);
+        // console.log(correoUser);
 
         if (payload.user !== correoUser) {
             return res
